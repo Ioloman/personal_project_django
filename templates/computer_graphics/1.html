@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="canvas">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="container">
+        <div class="row" style="text-align: left" id="controls">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="rotate">
+                Вращение
+                <div id="rotate_input">
+                    <input type="checkbox" id="x"> Вокруг Х<br>
+                    <input type="checkbox" id="y"> Вокруг Y<br>
+                    <input type="checkbox" id="z"> Вокруг Z<br>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="scale">
+                Масштабирование
+                <div id="scale_input">
+                    <button id="x+" class="btn btn-primary">+</button>
+                    <button id="x-" class="btn btn-primary">-</button> По X<br><br>
+                    <button id="y+" class="btn btn-primary">+</button>
+                    <button id="y-" class="btn btn-primary">-</button> По Y<br><br>
+                    <button id="z+" class="btn btn-primary">+</button>
+                    <button id="z-" class="btn btn-primary">-</button> По Z<br><br>
+                    <button id="all+" class="btn btn-primary">+</button>
+                    <button id="all-" class="btn btn-primary">-</button> Во все стороны
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="move">
+                Перемещение
+                <div id="move_input">
+                    <input type="range" min="0" max="360" step="1" id="horizontal"> Угол направления по горизонтали (0:360)<br>
+                    <input type="range" min="-90" max="90" step="1" id="vertical"> Угол по вертикали (-90:90)<br>
+                    <button id="move_button" class="btn btn-secondary">Двигаться</button>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="custom">
+                Вращение по спирали вокруг осей
+                <div id="custom_input">
+                    <input type="radio" id="stop" name="custom" checked> Стоп<br>
+                    <input type="radio" id="x" name="custom"> Вокруг Х<br>
+                    <input type="radio" id="y" name="custom"> Вокруг Y<br>
+                    <input type="radio" id="z" name="custom"> Вокруг Z<br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><hr>
+    <div class="container" style="text-align: left">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="options">
+                Настройки проекции:<br><br>
+                Тип
+                <select id="projection_type">
+                    <option value="1" selected>Аксонометрическая</option>
+                    <option value="0">Косоугольная</option>
+                </select><hr><br>
+                Настройки аксономической:<br>
+                Проекция
+                <select id="projection_surface">
+                    <option value="x" selected>x</option>
+                    <option value="y">y</option>
+                    <option value="z">z</option>
+                </select><br>
+                <div id="angles">
+                    Угол по х <input type="text" size="3" id="x" value="0"><br>
+                    Угол по y <input type="text" size="3" id="y" value="0"><br>
+                    Угол по z <input type="text" size="3" id="z" value="0"><br>
+                </div>
+                <div id="translate">
+                    Смещение по х <input type="text" size="3" id="x" value="0"><br>
+                    Смещение по y <input type="text" size="3" id="y" value="0"><br>
+                    Смещение по z <input type="text" size="3" id="z" value="0"><br>
+                </div>
+                <button id="project" class="btn btn-dark">Применить</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                ---
+            </div>
+        </div>
+    </div>
+
+    {% load static %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js"
+            integrity="sha512-4VdpCxbABk7wjJb/9z/d3EyibeHwUY0FgHbFO4EiIPVtyyV6llhENCvzRk8SH5D86+Jwm6QLagqRRnEJCd3gJg=="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/' %}figures{{ number }}.js"></script>
+    <script src="{% static 'js/' %}{{ number }}.js"></script>
+{% endblock %}

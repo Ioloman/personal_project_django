@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <hr>
+    <div class="row">
+
+        {% for lab in labs %}
+            <div class="border-right border-left col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                <a href="{% url 'graphics:labs' lab.number %}">
+                    <img src="{{ lab.image.url }}" width="100%" class="img-fluid mb-2 rounded"/>
+                    <h2 class="title">Лабораторная работа #{{ lab.number }}</h2>
+                    <p class="text">{{ lab.description }}</p>
+                </a>
+            </div>
+        {% endfor %}
+
+    </div>
+    <hr>
+</div>
+
+{% endblock %}
