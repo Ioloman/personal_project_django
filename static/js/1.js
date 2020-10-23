@@ -406,7 +406,7 @@ axis.write = function (){
 let square = new Shape(figurePoints, figureEdges, ctx, 'rgb(213,59,180)', true);
 function run() {
     ctx.clearRect(ctx.startX, ctx.startY, ctx.width, ctx.height);
-
+    ctx.drawImage(ctx.canvas.offScreenCanvas, ctx.startX, ctx.startY);
 
 
     axis.project();
