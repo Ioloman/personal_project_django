@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="canvas">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div id="choose">
+        <input type="radio" id="line" name="custom" checked> Линии |
+        <input type="radio" id="pixel" name="custom"> Пиксели |
+        Задержка (ms) <input type="text" size="3" id="delay" value="0">
+        <input type="button" id="delay_button" value="Изменить">
+        <input type="button" id="stop_button" value="Стоп">
+    </div>
+    <div>
+        Z-Buffer:<br>
+        <canvas id="z_buffer"></canvas>
+    </div>
+    <div >
+        <div id="info" style="text-align: left; margin-left: 10em"></div>
+    </div>
+
+    {% load static %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.2.0/math.min.js"
+            integrity="sha512-4VdpCxbABk7wjJb/9z/d3EyibeHwUY0FgHbFO4EiIPVtyyV6llhENCvzRk8SH5D86+Jwm6QLagqRRnEJCd3gJg=="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/' %}figures{{ number }}.js"></script>
+    <script src="{% static 'js/' %}{{ number }}.js"></script>
+{% endblock %}
